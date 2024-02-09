@@ -1,0 +1,91 @@
+<DOCTYPE html>
+<html>
+    <head>
+	<title>Tabs</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+	    body {
+		padding: 0;
+		margin: 0;
+		box-sizing: border-box;
+	    }
+
+	    .tab {
+		overflow: hidden;
+		border: 1px solid #ccc;
+		background-color: #f1f1f1;
+	    }
+
+	    .tab button {
+		background-color: inherit;
+		float: left;
+		border: none;
+		outline: none;
+		font-size: 17px;
+		padding: 14px 16px;
+		transition: 0.3s;
+		cursor: pointer;
+	    }
+
+	    .tab button:hover {
+		background-color: #ddd;
+	    }
+
+	    .tab button.active {
+		background-color: #ccc;
+	    }
+
+	    .tabcontent {
+		display: none;
+		border: 1px solid #ccc;
+		padding: 6px 12px;
+		border-top: none;
+	    }
+	</style>
+    </head>
+    <body>
+	<h2>Tabs</h2>
+
+	<div class="tab">
+	    <button class="tablink" onclick="openCity(event, 'London')">London</button>
+	    <button class="tablink" onclick="openCity(event, 'Paris')">Paris</button>
+	    <button class="tablink" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+	</div>
+
+	<div id="London" class="tabcontent">
+	    <h3>London</h3>
+	    <p>London is capital city of England.</p>
+	</div>
+
+	<div id="Paris" class="tabcontent">
+	    <h3>Paris</h3>
+	    <p>Paris is capital city of France.</p>
+	</div>
+
+	<div id="Tokyo" class="tabcontent">
+	    <h3>Tokyo</h3>
+	    <p>Tokyo is capital of Japan.</p>
+	</div>
+
+	<script>
+	    const tablink = document.getElementsByClassName("tablink");
+	    const tabcontent = document.getElementsByClassName("tabcontent");
+
+	    function openCity(evt, cityName) {	
+		for (let i = 0; i < tablink.length; i++){
+		    tablink[i].className = tablink[i].className.replace(" active", "");
+		}
+
+		for (let j = 0; j < tabcontent.length; j++){
+		    tabcontent[j].style.display = "none";
+		}
+
+		document.getElementById(cityName).style.display = "block";
+
+		// this = event.currentTarget
+		evt.currentTarget.className += " active";
+	    }
+	</script>
+    </body>
+
+</html>
