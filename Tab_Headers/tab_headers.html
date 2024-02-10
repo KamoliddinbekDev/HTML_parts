@@ -9,13 +9,77 @@
 		margin: 0;
 		box-sizing: border-box;
 	    }
+	    
+	    .tablink {
+		width: 25%;
+		float: left;
+		border: none;
+		outline: none;
+		font-size: 17px;
+		color: white;
+		background-color: #555;
+		padding: 14px 16px;
+	    }
 
+	    .tablink:hover {
+		background-color: #777;
+	    }
+
+	    .tabcontent {
+		color: #fff;
+		text-align: center;
+		padding: 50px;
+		display: none;
+	    }
+
+	    #London { background-color: red; }
+	    #Tashkent { background-color: blue; }
+	    #Paris { background-color: green; }
+	    #Tokyo { background-color: orange; }
 	</style>
     </head>
     <body>
-	
-	<script>
+	<h2>Tab Header</h2>
 
+	<div id="London" class="tabcontent">
+	    <h1>London</h1>
+	    <p>London is the capital city of England</p>
+	</div>
+	
+	<div id="Paris" class="tabcontent">
+	    <h1>Paris</h1>
+	    <p>Paris is the capital city of France</p>
+	</div>
+	
+	<div id="Tokyo" class="tabcontent">
+	    <h1>Tokyo</h1>
+	    <p>Tokyo is the capital city of Japan</p>
+	</div>
+	<div id="Tashkent" class="tabcontent">
+	    <h1>Tashkent</h1>
+	    <p>Tashkent is capital city of Uzbekistan</p>
+	</div>
+
+	<button class="tablink" onclick="openCity('London', this, 'red')">London</button>
+	<button class="tablink" id="defaultOpen" onclick="openCity('Tashkent', this, 'blue')">Tashkent</button>
+	<button class="tablink"onclick="openCity('Paris', this, 'green')">Paris</button>
+	<button class="tablink"onclick="openCity('Tokyo', this, 'orange')">Tokyo</button>
+	<script>
+	    function openCity(cityName, elemnt, color){
+		let tabcontent = document.getElementsByClassName("tabcontent");
+		for(let i = 0; i < tabcontent.length; i++) {
+		    tabcontent[i].style.display = "none";
+		}
+
+		let tablink = document.getElementsByClassName("tablink");
+		for(let i = 0; i < tablink.length; i++) {
+		    tablink[i].style.backgroundColor = "";
+		}
+		
+		document.getElementById(cityName).style.display = "block";
+		elemnt.style.backgroundColor = color;
+	    }
+	    document.getElementById("defaultOpen").click();
 	</script>
     </body>
 </html>
